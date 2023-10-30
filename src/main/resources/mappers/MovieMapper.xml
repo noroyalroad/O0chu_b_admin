@@ -102,7 +102,8 @@
     </select>
 
     <select id="moviesearch" parameterType="com.example.mariate.domain.MoiveDTO" resultType="com.example.mariate.domain.MoiveDTO">
-        SELECT  * FROM  movie_info  WHERE KR_TITLE  LIKE CONCAT('%',#{korean_title},'%') OR US_TITLE LIKE CONCAT('%',#{orginal_title},'%')
+        SELECT * FROM movie_info mi
+        WHERE REPLACE(KR_TITLE, ' ', '') LIKE CONCAT('%', #{genres}, '%') OR KR_TITLE LIKE CONCAT('%', #{genres}, '%');
     </select>
 
     <select id="suggestion" parameterType="com.example.mariate.domain.MoiveDTO" resultType="com.example.mariate.domain.MoiveDTO">
